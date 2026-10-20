@@ -1,59 +1,8 @@
-import type { SVGProps } from "react";
 import Link from "next/link";
 import { appUrl } from "@/lib/site";
-
-function CapIcon(props: SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.7"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      {...props}
-    >
-      <path d="M22 10 12 5 2 10l10 5 10-5Z" />
-      <path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5" />
-      <path d="M22 10v6" />
-    </svg>
-  );
-}
-
-function ArrowRightIcon(props: SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.7"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      {...props}
-    >
-      <path d="M5 12h14M13 6l6 6-6 6" />
-    </svg>
-  );
-}
-
-function ArrowUpRightIcon(props: SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.7"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      {...props}
-    >
-      <path d="M7 17 17 7M8 7h9v9" />
-    </svg>
-  );
-}
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
+import { ArrowRightIcon, ArrowUpRightIcon } from "@/components/icons";
 
 const tickerItems = [
   "Issued on Solana",
@@ -153,44 +102,7 @@ function Ticker() {
 export default function Home() {
   return (
     <div className="flex min-h-screen flex-col overflow-x-clip">
-      <header className="sticky top-0 z-40 border-b border-ink/20 bg-paper/90 backdrop-blur-md">
-        <div className="flex h-16 w-full items-center justify-between gap-6 px-5 sm:px-8 lg:px-12">
-          <Link href="/" className="flex items-center gap-3">
-            <span className="flex h-9 w-9 items-center justify-center bg-ink text-paper">
-              <CapIcon className="h-5 w-5" />
-            </span>
-            <span className="text-lg font-semibold tracking-[-0.02em]">
-              DegreeNFT
-            </span>
-            <span className="hidden font-mono text-[9px] uppercase tracking-[0.18em] text-ink/50 sm:inline">
-              Academic registry
-            </span>
-          </Link>
-
-          <nav className="hidden items-center gap-8 font-mono text-[10px] uppercase tracking-[0.18em] md:flex">
-            <a href="#system" className="transition-colors hover:text-cobalt">
-              The system
-            </a>
-            <a
-              href="#how-it-works"
-              className="transition-colors hover:text-cobalt"
-            >
-              Mechanism
-            </a>
-            <a href="#verify" className="transition-colors hover:text-cobalt">
-              Verify
-            </a>
-          </nav>
-
-          <a
-            href={appUrl}
-            className="group inline-flex h-9 items-center gap-2 border border-ink bg-ink px-3.5 font-mono text-[10px] uppercase tracking-[0.16em] text-paper transition-colors hover:border-cobalt hover:bg-cobalt sm:px-4"
-          >
-            Open dApp
-            <ArrowRightIcon className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
-          </a>
-        </div>
-      </header>
+      <SiteHeader />
 
       <main className="flex-1">
         <section className="relative overflow-hidden border-b border-ink/20">
@@ -357,6 +269,28 @@ export default function Home() {
         </section>
 
         <Ticker />
+
+        <section className="w-full border-b border-ink/20">
+          <Link
+            href="/learn"
+            className="group flex flex-col gap-4 px-5 py-5 transition-colors hover:bg-cobalt hover:text-paper sm:flex-row sm:items-center sm:justify-between sm:px-8 lg:px-12"
+          >
+            <div className="flex items-start gap-3 sm:items-center">
+              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 bg-cobalt group-hover:bg-acid sm:mt-0" />
+              <p className="text-sm leading-6">
+                <span className="font-semibold">New to crypto?</span>{" "}
+                <span className="text-ink/60 group-hover:text-paper/70">
+                  Follow the plain-English guide — wallet, claim, share. About
+                  20 minutes.
+                </span>
+              </p>
+            </div>
+            <span className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.16em]">
+              Start here
+              <ArrowRightIcon className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+            </span>
+          </Link>
+        </section>
 
         <section id="system" className="w-full scroll-mt-16 border-b border-ink/20">
           <div className="grid lg:grid-cols-[280px_minmax(0,1fr)]">
@@ -525,91 +459,7 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="w-full bg-ink text-paper">
-        <div className="px-5 py-12 sm:px-8 lg:px-12">
-          <div className="flex flex-col gap-12 lg:flex-row lg:items-end lg:justify-between">
-            <div>
-              <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-paper/45">
-                The academic registry
-              </p>
-              <p className="mt-3 font-serif text-6xl leading-none tracking-[-0.04em] sm:text-8xl">
-                DegreeNFT<span className="text-acid">.</span>
-              </p>
-              <p className="mt-5 max-w-sm text-sm leading-7 text-paper/60">
-                A permanent, portable record of academic achievement. Built for
-                the people who earn it and the people who need to trust it.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-2 gap-10 sm:gap-16">
-              <div>
-                <p className="font-mono text-[8px] uppercase tracking-[0.2em] text-paper/40">
-                  Navigate
-                </p>
-                <ul className="mt-4 space-y-3 text-sm">
-                  <li>
-                    <a
-                      href="#system"
-                      className="transition-colors hover:text-acid"
-                    >
-                      The system
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#how-it-works"
-                      className="transition-colors hover:text-acid"
-                    >
-                      Mechanism
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#verify"
-                      className="transition-colors hover:text-acid"
-                    >
-                      Verification
-                    </a>
-                  </li>
-                </ul>
-              </div>
-
-              <div>
-                <p className="font-mono text-[8px] uppercase tracking-[0.2em] text-paper/40">
-                  Access
-                </p>
-                <ul className="mt-4 space-y-3 text-sm">
-                  <li>
-                    <a
-                      href={appUrl}
-                      className="transition-colors hover:text-acid"
-                    >
-                      Open dApp
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href={`${appUrl}/verify`}
-                      className="transition-colors hover:text-acid"
-                    >
-                      Verify credential
-                    </a>
-                  </li>
-                  <li className="flex items-center gap-2 text-paper/60">
-                    <span className="h-1.5 w-1.5 rounded-full bg-acid" />
-                    Solana devnet
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-16 flex flex-col gap-2 border-t border-paper/20 pt-5 font-mono text-[8px] uppercase tracking-[0.16em] text-paper/40 sm:flex-row sm:items-center sm:justify-between">
-            <span>© DegreeNFT. All rights reserved.</span>
-            <span>Credentials, not PDFs.</span>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }
