@@ -11,6 +11,8 @@ import {
 import { appUrl } from "@/lib/site";
 import { getGuideStep, guideSteps } from "@/lib/guide";
 
+export const instant = false;
+
 type StepPageProps = {
   params: Promise<{ slug: string }>;
 };
