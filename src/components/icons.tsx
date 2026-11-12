@@ -19,6 +19,7 @@ export function CapIcon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
+
 export function ArrowRightIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
