@@ -10,7 +10,7 @@ export const appUrl = trimTrailingSlash(
 export const siteName = "DegreeNFT";
 export const siteTitle = "DegreeNFT | Verified Academic Credentials on Solana";
 export const siteDescription =
-  "DegreeNFT lets universities issue tamper-proof academic credentials on Solana and gives students and employers instant verification.";
+  "DegreeNFT lets universities issue tamper proof academic credentials on Solana and gives students and employers instant verification.";
 export const siteKeywords = [
   "DegreeNFT",
   "academic credentials",
